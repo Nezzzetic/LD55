@@ -15,20 +15,28 @@ public class EnergyController : MonoBehaviour
     private float[] UseEnergy;
     void Start()
     {
-        
+        UseEnergy=new float[] { ShootValue, CallValue, SpeedUpValue };
     }
     void Update()
     {
 
-        if (weaponActive)
-        {
-            Value += UseEnergy[currentWeapon] * Time.deltaTime;
-            if (Value < 0) Value = 0;
-        }
-        else
-        {
-            Value += RegenValue * Time.deltaTime;
-            if (Value > MaxValue) Value = MaxValue;
-        }
+        //if (weaponActive)
+        //{
+        //    var dif = -UseEnergy[currentWeapon] * Time.deltaTime;
+        //    if (Value >= dif)
+        //    {
+        //        Value += dif;
+        //    }
+        //    else
+        //    {
+        //        Value = 0;
+        //        weaponActive = false;
+        //    }
+        //}
+        //else
+        //{
+        //    Value += RegenValue * Time.deltaTime;
+        //    if (Value > MaxValue) Value = MaxValue;
+        //}
     }
 }

@@ -12,6 +12,7 @@ public class GhostGenerator : MonoBehaviour
     public Vector2 GenerationX;
     public Vector2 GenerationY;
     public Transform DefaultTarget;
+    public SummonController SummonController;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class GhostGenerator : MonoBehaviour
     void Update()
     {
         if (!ShostGenActive)  return;
+        SummonController.AddVal(Time.deltaTime);
         if (cooldownRemaining > 0)
         {
             cooldownRemaining -= Time.deltaTime;

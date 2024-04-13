@@ -8,6 +8,7 @@ public class GlobalSpeedUp : MonoBehaviour
     public bool SpeedUpActive;
     public float TimeChange;
     public float cooldownRemaining;
+    public SummonController SummonController;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class GlobalSpeedUp : MonoBehaviour
     {
         if (cooldownRemaining > 0)
         {
+
             cooldownRemaining -= Time.deltaTime;
             if (cooldownRemaining <= 0)
             {
@@ -26,6 +28,11 @@ public class GlobalSpeedUp : MonoBehaviour
                 SpeedUpActive = true;
             }
         }
-        if (SpeedUpActive) Time.timeScale = TimeChange; else Time.timeScale = 1;
+        if (SpeedUpActive)
+        {
+            Time.timeScale = TimeChange;
+            SummonController.AddVal(Time.deltaTime);
+        }
+        else Time.timeScale = 1;
     }
 }

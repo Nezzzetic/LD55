@@ -151,4 +151,4 @@ MonoBehaviour:
   cooldownRemaining: 0
   ExplosionPrefab: {fileID: 4933863198805763929, guid: 9cde310c6043a2b48bd4eaabeda8ca71, type: 3}
   BombRigidBody: {fileID: 4111489913482755800}
-  radius: 1.5
+  radius: 1

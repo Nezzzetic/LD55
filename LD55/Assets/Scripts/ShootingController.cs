@@ -10,6 +10,7 @@ public class ShootingController : MonoBehaviour
     public Transform BulletHome;
     public bool ShootActive;
     public Camera camera;
+    public EnergyController EnergyController;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class ShootingController : MonoBehaviour
         if (!ShootActive) return;
         
         if (Input.GetMouseButton(0)) {
+            EnergyController.weaponActive = true;
             if (cooldownRemaining > 0)
             {
                 cooldownRemaining -= Time.deltaTime;
@@ -34,9 +36,16 @@ public class ShootingController : MonoBehaviour
             }
         }
         if (Input.GetMouseButtonUp(0))
-        { cooldownRemaining = cooldown; }
-
+        {
+            cooldownRemaining = cooldown; 
+            EnergyController.weaponActive = false; 
         }
+        if (EnergyController.Value == 0)
+        {
+            cooldownRemaining = cooldown;
+            ShootActive = false;
+        }
+    }
 
     void shoot()
     {
@@ -64,7 +73,7 @@ public class ShootingController : MonoBehaviour
         }
         else
         {
-            cooldownRemaining= 0;
+            cooldownRemaining = 0;
         }
     }
 }

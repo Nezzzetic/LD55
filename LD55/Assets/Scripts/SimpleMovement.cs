@@ -15,6 +15,7 @@ public class SimpleMovement : MonoBehaviour
     public CallGhostController CallGhostController;
     public ShootingController ShootingController;
     public int weaponIndex;
+    public EnergyController EnergyController;
 
     // Start is called before the first frame update
     void Start()
@@ -42,19 +43,21 @@ public class SimpleMovement : MonoBehaviour
                 ShootingController.ShootActive = true;
                 CallGhostController.CallActive = false;
                 SpeedUpController.SpeedUpActive = false;
-                
+                EnergyController.currentWeapon = 0;
             }
             if (a123[1])
             {
                 ShootingController.ShootActive = false;
                 CallGhostController.CallActive = true;
                 SpeedUpController.SpeedUpActive = false;
+                EnergyController.currentWeapon = 1;
             }
             if (a123[2])
             {
                 ShootingController.ShootActive = false;
                 CallGhostController.CallActive = false;
                 SpeedUpController.SpeedUpActive = true;
+                EnergyController.currentWeapon = 2;
             }
             CallGhostController.OnChange();
             SpeedUpController.OnChange();
