@@ -14,7 +14,7 @@ public class ShootingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ActivateShoot(true);
+        ActivateShoot(true);
     }
 
     // Update is called once per frame

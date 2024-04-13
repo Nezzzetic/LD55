@@ -42,6 +42,7 @@ public class SimpleMovement : MonoBehaviour
                 ShootingController.ShootActive = true;
                 CallGhostController.CallActive = false;
                 SpeedUpController.SpeedUpActive = false;
+                
             }
             if (a123[1])
             {
@@ -55,6 +56,8 @@ public class SimpleMovement : MonoBehaviour
                 CallGhostController.CallActive = false;
                 SpeedUpController.SpeedUpActive = true;
             }
+            CallGhostController.OnChange();
+            SpeedUpController.OnChange();
         }
         //if (Input.GetKeyDown(KeyCode.Alpha1) || a123[0])
         //{

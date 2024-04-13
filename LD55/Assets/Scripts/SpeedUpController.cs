@@ -26,4 +26,12 @@ public class SpeedUpController : MonoBehaviour
         }
 
     }
+    public void OnChange()
+    {
+        if (Input.GetMouseButton(0) && SpeedUpActive)
+            Movement.speedSlowModCurrent = 2;
+        else
+            Movement.speedSlowModCurrent = 1;
+
+    }
 }

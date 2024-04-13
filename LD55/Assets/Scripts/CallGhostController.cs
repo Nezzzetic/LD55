@@ -26,4 +26,13 @@ public class CallGhostController : MonoBehaviour
         }
 
     }
+
+    public void OnChange()
+    {
+        if (Input.GetMouseButton(0) && CallActive)
+        { CallSphere.SetActive(true); }
+         else
+            CallSphere.SetActive(false);
+        
+    }
 }

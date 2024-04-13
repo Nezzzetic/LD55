@@ -11,6 +11,7 @@ public class Bomb : MonoBehaviour
     public float cooldownRemaining;
     public GameObject ExplosionPrefab;
     public Rigidbody BombRigidBody;
+    public float radius;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +35,7 @@ public class Bomb : MonoBehaviour
     public void Expload()
     {
         var explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
         foreach (var hitCollider in hitColliders)
         {
             Debug.Log(hitCollider.gameObject.name);
