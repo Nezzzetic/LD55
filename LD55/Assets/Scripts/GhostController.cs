@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GhostController : MonoBehaviour
 {
-    public Vector3 Target;
+    public Transform Target;
     public float speed;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class GhostController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(Target - transform.position);
+        transform.rotation = Quaternion.LookRotation(Target.position - transform.position);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 }

@@ -8,9 +8,10 @@ public class GhostGenerator : MonoBehaviour
     public float cooldown;
     public float cooldownRemaining;
     public GameObject GhostPrefab;
-    public bool ShootActive;
+    public bool ShostGenActive;
     public Vector2 GenerationX;
     public Vector2 GenerationY;
+    public Transform DefaultTarget;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class GhostGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!ShostGenActive)  return;
         if (cooldownRemaining > 0)
         {
             cooldownRemaining -= Time.deltaTime;
@@ -33,8 +35,23 @@ public class GhostGenerator : MonoBehaviour
 
     public void CreateGhost()
     {
-        var rndx = Random.Range(GenerationX.x, GenerationX.y);
-        var rndy = Random.Range(GenerationY.x, GenerationY.y);
+        var rnd = Random.Range(0, 3);
+        var rndx = GenerationX.x;
+        var rndy = GenerationY.x;
+        if (rnd==0)
+        {
+            rndy = Random.Range(GenerationY.x, GenerationY.y);
+        }
+        if (rnd == 1)
+        {
+            rndx = Random.Range(GenerationX.x, GenerationX.y);
+        }
+        if (rnd == 2)
+        {
+            rndx = GenerationX.y;
+            rndy = Random.Range(GenerationY.x, GenerationY.y);
+        }
         var bullet = Instantiate(GhostPrefab, new Vector3(rndx,1,rndy), Quaternion.identity);
+        bullet.GetComponent<GhostController>().Target=DefaultTarget;
     }
 }

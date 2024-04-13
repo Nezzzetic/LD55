@@ -14,34 +14,41 @@ public class ShootingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ActivateShoot(true);
+        //ActivateShoot(true);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!ShootActive) return;
-        if (cooldownRemaining>0)
-        {
-            cooldownRemaining -= Time.deltaTime;
-            if (cooldownRemaining <= 0) {
-                cooldownRemaining = cooldown;
-                shoot();
+        
+        if (Input.GetMouseButton(0)) {
+            if (cooldownRemaining > 0)
+            {
+                cooldownRemaining -= Time.deltaTime;
+                if (cooldownRemaining <= 0)
+                {
+                    cooldownRemaining = cooldown;
+                    shoot();
+                }
             }
         }
-    }
+        if (Input.GetMouseButtonUp(0))
+        { cooldownRemaining = cooldown; }
+
+        }
 
     void shoot()
     {
-        
+        int layerMask = 1 << 6;
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            Transform objectHit = hit.transform;
-            var bullet = Instantiate(BulletPrefab, hit.point + Vector3.up * 1.5f, Quaternion.identity);
-            bullet.BombRigidBody.AddForce(Vector3.down, ForceMode.VelocityChange);
+            var bullet = Instantiate(BulletPrefab, BulletHome.position + Vector3.up * 1.5f, Quaternion.identity);
+            var directionToMouse = Vector3.Normalize(hit.point - BulletHome.position);
+            bullet.BombRigidBody.AddForce(directionToMouse *15, ForceMode.VelocityChange);
             bullet.cooldownRemaining = bullet.Lifetime;
             // Do something with the object that was hit by the raycast.
         }

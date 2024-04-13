@@ -11,31 +11,69 @@ public class SimpleMovement : MonoBehaviour
     public Transform body;
     public Transform bodyVisual;
     public Vector3 Direction;
+    public SpeedUpController SpeedUpController;
+    public CallGhostController CallGhostController;
+    public ShootingController ShootingController;
+    public int weaponIndex;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        weaponIndex = 0;
+        ShootingController.ShootActive = true;
+        CallGhostController.CallActive = false;
+        SpeedUpController.SpeedUpActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        var a123 = new bool[] { false, false, false };
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Time.timeScale = 1f;
-            speedSlowModCurrent = 1;
+            if (weaponIndex==2) weaponIndex= 0; else weaponIndex++;
+            for (var i=0; i<a123.Length; i++)
+            {
+                if (i == weaponIndex) a123[i] = true; else a123[i] = false;
+            }
+            if (a123[0])
+            {
+                ShootingController.ShootActive = true;
+                CallGhostController.CallActive = false;
+                SpeedUpController.SpeedUpActive = false;
+            }
+            if (a123[1])
+            {
+                ShootingController.ShootActive = false;
+                CallGhostController.CallActive = true;
+                SpeedUpController.SpeedUpActive = false;
+            }
+            if (a123[2])
+            {
+                ShootingController.ShootActive = false;
+                CallGhostController.CallActive = false;
+                SpeedUpController.SpeedUpActive = true;
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Time.timeScale = 1f;
-            speedSlowModCurrent = 2;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Time.timeScale = 2f;
-            speedSlowModCurrent = 1;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1) || a123[0])
+        //{
+        //    ShootingController.ShootActive = true;
+        //    CallGhostController.CallActive= false;
+        //    SpeedUpController.SpeedUpActive = false;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2) || a123[1])
+        //{
+        //    ShootingController.ShootActive = false;
+        //    CallGhostController.CallActive = true;
+        //    SpeedUpController.SpeedUpActive = false;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3) || a123[2])
+        //{
+        //    ShootingController.ShootActive = false;
+        //    CallGhostController.CallActive = false;
+        //    SpeedUpController.SpeedUpActive = true;
+        //}
         Vector3 newDirection = Vector3.RotateTowards(bodyVisual.forward, Direction, singleStepRotation, 0.0f);
         singleStepRotation = singleStepRotation * 0.9f;
         bodyVisual.rotation = Quaternion.LookRotation(newDirection);
@@ -43,22 +81,27 @@ public class SimpleMovement : MonoBehaviour
         var vertFlag = false;
         var gorizFlag = false;
         Vector3 _movement = Vector3.zero;
-        if (Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
+
+        bool up= Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+        bool down= Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+        bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+        bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+        if (up && !down)
         {
             vertFlag = true;
             _movement += Vector3.forward * speed * speedSlowModCurrent * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
+        if (down && !up)
         {
             vertFlag = true;
             _movement += Vector3.back * speed * speedSlowModCurrent * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+        if (left && !right)
         {
             gorizFlag = true;
             _movement += Vector3.left * speed * speedSlowModCurrent * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
+        if (right && !left)
         {
             gorizFlag = true;
             _movement += Vector3.right * speed * speedSlowModCurrent * Time.deltaTime;
