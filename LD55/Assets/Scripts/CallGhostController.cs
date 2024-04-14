@@ -7,6 +7,9 @@ public class CallGhostController : MonoBehaviour
     public float cooldown;
     public float cooldownRemaining;
     public GameObject CallSphere;
+    public ParticleSystem CallSpherePart;
+    public ParticleSystem.ShapeModule ParticleSystemShapeType;
+    public ParticleSystem.MainModule ParticleSystemMainModule;
     public float SphereDefaultSize;
     public float SphereCurrentSize;
     public float SphereMaxSize;
@@ -17,6 +20,8 @@ public class CallGhostController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ParticleSystemShapeType = CallSpherePart.shape;
+        ParticleSystemMainModule = CallSpherePart.main;
     }
 
     // Update is called once per frame
@@ -37,6 +42,8 @@ public class CallGhostController : MonoBehaviour
             CallSphere.SetActive(false);
             SphereCurrentSize = SphereDefaultSize;
             CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
+            ParticleSystemShapeType.radius = 3 + SphereCurrentSize - 5;
+            ParticleSystemMainModule.startSpeed = -2 * SphereCurrentSize / 6;
             EnergyController.weaponActive = false;
         }
         if (EnergyController.Value == 0)
@@ -59,6 +66,8 @@ public class CallGhostController : MonoBehaviour
             CallSphere.SetActive(false);
             SphereCurrentSize = SphereDefaultSize;
             CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
+            ParticleSystemShapeType.radius = 3 + SphereCurrentSize - 5;
+            ParticleSystemMainModule.startSpeed = -2 * SphereCurrentSize / 5;
         }
     }
 
@@ -67,5 +76,7 @@ public class CallGhostController : MonoBehaviour
         SphereCurrentSize += SphereGrowSpeed * Time.deltaTime;
         if (SphereCurrentSize > SphereMaxSize) { SphereCurrentSize = SphereMaxSize; }
         CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
+        ParticleSystemShapeType.radius = 3 + SphereCurrentSize - 5;
+        ParticleSystemMainModule.startSpeed = -2 * SphereCurrentSize / 5;
     }
 }
