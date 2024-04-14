@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageTrigger : MonoBehaviour
+public class BombBoom : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,10 +14,5 @@ public class DamageTrigger : MonoBehaviour
     void Update()
     {
         
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<GhostController>() != null)
-            other.GetComponent<GhostController>().Death();
     }
 }

@@ -21,9 +21,18 @@ public class Health : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<GhostController>() != null) {
-            Destroy(other.gameObject);
-            Value--;
-            if (Value<=0) SceneControl.RestartLevel();
+            other.GetComponent<GhostController>().Death();
+            Damage();
         }
+        if (other.GetComponent<BombBoom>() != null)
+        {
+            Damage();
+        }
+    }
+
+    public void Damage()
+    {
+        Value--;
+        if (Value <= 0) SceneControl.RestartLevel();
     }
 }

@@ -35,12 +35,12 @@ public class Bomb : MonoBehaviour
     public void Expload()
     {
         var explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-        foreach (var hitCollider in hitColliders)
-        {
-            if (hitCollider.GetComponent<GhostController>() != null)
-                Destroy(hitCollider.gameObject);
-        }
+        //Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+        //foreach (var hitCollider in hitColliders)
+        //{
+        //    if (hitCollider.GetComponent<Health>() != null)
+        //        hitCollider.GetComponent<Health>().Damage();
+        //}
         Destroy(explosion, 1);
     }
 }

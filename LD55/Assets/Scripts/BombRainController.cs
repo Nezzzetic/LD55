@@ -47,7 +47,7 @@ public class BombRainController : MonoBehaviour
     {
         var rndx = Random.Range(GenerationX.x, GenerationX.y);
         var rndy = Random.Range(GenerationY.x, GenerationY.y);
-        var bullet = Instantiate(BombPrefab, new Vector3(rndx, 3, rndy), Quaternion.identity);
+        var bullet = Instantiate(BombPrefab, new Vector3(rndx, 0, rndy), Quaternion.identity);
         bullet.cooldownRemaining = bullet.Lifetime;
         bombs.Add(bullet.gameObject);
     }

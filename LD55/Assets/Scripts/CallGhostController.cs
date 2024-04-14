@@ -40,10 +40,10 @@ public class CallGhostController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(0))
         {
             CallSphere.SetActive(false);
-            SphereCurrentSize = SphereDefaultSize;
-            CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
-            ParticleSystemShapeType.radius = 3 + SphereCurrentSize - 5;
-            ParticleSystemMainModule.startSpeed = -2 * SphereCurrentSize / 6;
+            //SphereCurrentSize = SphereDefaultSize;
+            //CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
+            //ParticleSystemShapeType.radius = 3 + SphereCurrentSize - 5;
+            //ParticleSystemMainModule.startSpeed = -2 * SphereCurrentSize / 6;
             EnergyController.weaponActive = false;
         }
         if (EnergyController.Value == 0)
@@ -64,19 +64,19 @@ public class CallGhostController : MonoBehaviour
          else
         {
             CallSphere.SetActive(false);
-            SphereCurrentSize = SphereDefaultSize;
-            CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
-            ParticleSystemShapeType.radius = 3 + SphereCurrentSize - 5;
-            ParticleSystemMainModule.startSpeed = -2 * SphereCurrentSize / 5;
+            //SphereCurrentSize = SphereDefaultSize;
+            //CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
+            //ParticleSystemShapeType.radius = 3 + SphereCurrentSize - 5;
+            //ParticleSystemMainModule.startSpeed = -2 * SphereCurrentSize / 5;
         }
     }
 
     private void _updateSphere()
     {
-        SphereCurrentSize += SphereGrowSpeed * Time.deltaTime;
-        if (SphereCurrentSize > SphereMaxSize) { SphereCurrentSize = SphereMaxSize; }
-        CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
-        ParticleSystemShapeType.radius = 3 + SphereCurrentSize - 5;
-        ParticleSystemMainModule.startSpeed = -2 * SphereCurrentSize / 5;
+        //SphereCurrentSize += SphereGrowSpeed * Time.deltaTime;
+        //if (SphereCurrentSize > SphereMaxSize) { SphereCurrentSize = SphereMaxSize; }
+        //CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
+        //ParticleSystemShapeType.radius = 3 + SphereCurrentSize - 5;
+        //ParticleSystemMainModule.startSpeed = -2 * SphereCurrentSize / 5;
     }
 }
