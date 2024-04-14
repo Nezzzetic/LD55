@@ -15,6 +15,7 @@ public class GhostGenerator : MonoBehaviour
     public SummonController SummonController;
     public AudioSource Sound;
     bool soundActive;
+    public List<GameObject> ghosts = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -61,5 +62,6 @@ public class GhostGenerator : MonoBehaviour
         }
         var bullet = Instantiate(GhostPrefab, new Vector3(rndx,1,rndy), Quaternion.identity);
         bullet.GetComponent<GhostController>().Target=DefaultTarget;
+        ghosts.Add(bullet);
     }
 }

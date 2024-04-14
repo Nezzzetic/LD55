@@ -14,6 +14,7 @@ public class BombRainController : MonoBehaviour
     public SummonController SummonController;
     public AudioSource Sound;
     bool soundActive;
+    public List<GameObject> bombs = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -48,5 +49,6 @@ public class BombRainController : MonoBehaviour
         var rndy = Random.Range(GenerationY.x, GenerationY.y);
         var bullet = Instantiate(BombPrefab, new Vector3(rndx, 3, rndy), Quaternion.identity);
         bullet.cooldownRemaining = bullet.Lifetime;
+        bombs.Add(bullet.gameObject);
     }
 }
