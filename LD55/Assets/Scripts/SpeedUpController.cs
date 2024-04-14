@@ -19,13 +19,13 @@ public class SpeedUpController : MonoBehaviour
     {
 
         if (!SpeedUpActive) return;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             EnergyController.weaponActive = true;
             GlobalTimeController.localSpeedUpActive = true;
             Movement.speedSlowModCurrent = 5;
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetMouseButton(0))
         {
             GlobalTimeController.localSpeedUpActive = false;
             Movement.speedSlowModCurrent = 1;

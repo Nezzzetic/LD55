@@ -39,7 +39,7 @@ public class DamageNearController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
-                var directionToMouse = hit.point - transform.position;
+                var directionToMouse = new Vector3(hit.point.x,0, hit.point.z) - new Vector3(transform.position.x, 0, transform.position.z);
                 transform.rotation = Quaternion.LookRotation(directionToMouse);
             }
         }

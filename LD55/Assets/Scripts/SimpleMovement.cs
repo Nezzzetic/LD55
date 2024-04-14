@@ -23,8 +23,8 @@ public class SimpleMovement : MonoBehaviour
     {
         weaponIndex = 0;
         DamageNearController.DamageNearActive = true;
-        CallGhostController.CallActive = false;
-        SpeedUpController.SpeedUpActive = false;
+        CallGhostController.CallActive = true;
+        SpeedUpController.SpeedUpActive = true;
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class SimpleMovement : MonoBehaviour
     {
         var a123 = new bool[] { false, false, false };
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             if (weaponIndex==2) weaponIndex= 0; else weaponIndex++;
             for (var i=0; i<a123.Length; i++)
@@ -42,21 +42,21 @@ public class SimpleMovement : MonoBehaviour
             if (a123[0])
             {
                 DamageNearController.DamageNearActive = true;
-                CallGhostController.CallActive = false;
-                SpeedUpController.SpeedUpActive = false;
+                CallGhostController.CallActive = true;
+                SpeedUpController.SpeedUpActive = true;
                 EnergyController.currentWeapon = 0;
             }
             if (a123[1])
             {
-                DamageNearController.DamageNearActive = false;
+                DamageNearController.DamageNearActive = true;
                 CallGhostController.CallActive = true;
-                SpeedUpController.SpeedUpActive = false;
+                SpeedUpController.SpeedUpActive = true;
                 EnergyController.currentWeapon = 1;
             }
             if (a123[2])
             {
-                DamageNearController.DamageNearActive = false;
-                CallGhostController.CallActive = false;
+                DamageNearController.DamageNearActive = true;
+                CallGhostController.CallActive = true;
                 SpeedUpController.SpeedUpActive = true;
                 EnergyController.currentWeapon = 2;
             }
@@ -83,7 +83,8 @@ public class SimpleMovement : MonoBehaviour
         //}
         Vector3 newDirection = Vector3.RotateTowards(bodyVisual.forward, Direction, singleStepRotation, 0.0f);
         singleStepRotation = singleStepRotation * 0.9f;
-        //bodyVisual.rotation = Quaternion.LookRotation(newDirection);
+        if (!Input.GetMouseButton(0)) { bodyVisual.rotation = Quaternion.LookRotation(newDirection); }
+        
         Debug.DrawRay(bodyVisual.position, newDirection, Color.red);
         var vertFlag = false;
         var gorizFlag = false;

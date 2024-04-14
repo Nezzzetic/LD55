@@ -28,16 +28,16 @@ public class CallGhostController : MonoBehaviour
     void Update()
     {
         if (!CallActive) return;
-        if (Input.GetMouseButton(0))
+        if (Input.GetKey(KeyCode.Space))
         {
             _updateSphere();
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             CallSphere.SetActive(true);
             EnergyController.weaponActive = true;
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(0))
         {
             CallSphere.SetActive(false);
             SphereCurrentSize = SphereDefaultSize;
@@ -57,7 +57,7 @@ public class CallGhostController : MonoBehaviour
 
     public void OnChange()
     {
-        if (Input.GetMouseButton(0) && CallActive)
+        if (Input.GetKey(KeyCode.Space) && CallActive)
         {
             CallSphere.SetActive(true); 
         }

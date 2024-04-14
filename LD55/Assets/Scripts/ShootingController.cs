@@ -23,7 +23,7 @@ public class ShootingController : MonoBehaviour
     {
         if (!ShootActive) return;
         
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButton(0) ) {
             EnergyController.weaponActive = true;
             if (cooldownRemaining > 0)
             {
