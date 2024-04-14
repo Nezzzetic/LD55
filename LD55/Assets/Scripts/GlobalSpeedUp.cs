@@ -9,6 +9,7 @@ public class GlobalSpeedUp : MonoBehaviour
     public float TimeChange;
     public float cooldownRemaining;
     public SummonController SummonController;
+    public GlobalTimeController GlobalTimeController;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,9 +31,13 @@ public class GlobalSpeedUp : MonoBehaviour
         }
         if (SpeedUpActive)
         {
-            Time.timeScale = TimeChange;
+            GlobalTimeController.globalSpeedUpActive = true;
             SummonController.AddVal(Time.deltaTime);
         }
-        else Time.timeScale = 1;
+        else { 
+            GlobalTimeController.globalSpeedUpActive = false;
+        }
+
     }
+
 }

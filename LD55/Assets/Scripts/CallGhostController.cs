@@ -7,6 +7,10 @@ public class CallGhostController : MonoBehaviour
     public float cooldown;
     public float cooldownRemaining;
     public GameObject CallSphere;
+    public float SphereDefaultSize;
+    public float SphereCurrentSize;
+    public float SphereMaxSize;
+    public float SphereGrowSpeed;
     public bool CallActive;
     public EnergyController EnergyController;
 
@@ -19,6 +23,10 @@ public class CallGhostController : MonoBehaviour
     void Update()
     {
         if (!CallActive) return;
+        if (Input.GetMouseButton(0))
+        {
+            _updateSphere();
+        }
         if (Input.GetMouseButtonDown(0))
         {
             CallSphere.SetActive(true);
@@ -27,6 +35,8 @@ public class CallGhostController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             CallSphere.SetActive(false);
+            SphereCurrentSize = SphereDefaultSize;
+            CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
             EnergyController.weaponActive = false;
         }
         if (EnergyController.Value == 0)
@@ -41,9 +51,21 @@ public class CallGhostController : MonoBehaviour
     public void OnChange()
     {
         if (Input.GetMouseButton(0) && CallActive)
-        { CallSphere.SetActive(true); }
+        {
+            CallSphere.SetActive(true); 
+        }
          else
+        {
             CallSphere.SetActive(false);
-        
+            SphereCurrentSize = SphereDefaultSize;
+            CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
+        }
+    }
+
+    private void _updateSphere()
+    {
+        SphereCurrentSize += SphereGrowSpeed * Time.deltaTime;
+        if (SphereCurrentSize > SphereMaxSize) { SphereCurrentSize = SphereMaxSize; }
+        CallSphere.transform.localScale = new Vector3(SphereCurrentSize, SphereCurrentSize, SphereCurrentSize);
     }
 }

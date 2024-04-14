@@ -38,7 +38,6 @@ public class Bomb : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
         foreach (var hitCollider in hitColliders)
         {
-            Debug.Log(hitCollider.gameObject.name);
             if (hitCollider.GetComponent<GhostController>() != null)
                 Destroy(hitCollider.gameObject);
         }

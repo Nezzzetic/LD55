@@ -8,6 +8,7 @@ public class SpeedUpController : MonoBehaviour
     public bool SpeedUpActive;
     public SimpleMovement Movement;
     public EnergyController EnergyController;
+    public GlobalTimeController GlobalTimeController;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,27 +22,35 @@ public class SpeedUpController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             EnergyController.weaponActive = true;
-            Movement.speedSlowModCurrent = 2;
+            GlobalTimeController.localSpeedUpActive = true;
+            Movement.speedSlowModCurrent = 5;
         }
         if (Input.GetMouseButtonUp(0))
         {
-            EnergyController.weaponActive = false;
+            GlobalTimeController.localSpeedUpActive = false;
             Movement.speedSlowModCurrent = 1;
         }
         if (EnergyController.Value==0)
         {
             Movement.speedSlowModCurrent = 1;
             SpeedUpActive = false;
-            EnergyController.weaponActive = false;
+            GlobalTimeController.localSpeedUpActive = false;
         }
 
     }
     public void OnChange()
     {
         if (Input.GetMouseButton(0) && SpeedUpActive)
-            Movement.speedSlowModCurrent = 2;
+        {
+            GlobalTimeController.localSpeedUpActive = true;
+
+            Movement.speedSlowModCurrent = 5;
+        }
         else
+        {
+            GlobalTimeController.localSpeedUpActive = false;
             Movement.speedSlowModCurrent = 1;
+        }            
 
     }
 }

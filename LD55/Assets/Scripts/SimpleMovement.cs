@@ -14,6 +14,7 @@ public class SimpleMovement : MonoBehaviour
     public SpeedUpController SpeedUpController;
     public CallGhostController CallGhostController;
     public ShootingController ShootingController;
+    public DamageNearController DamageNearController;
     public int weaponIndex;
     public EnergyController EnergyController;
 
@@ -21,7 +22,7 @@ public class SimpleMovement : MonoBehaviour
     void Start()
     {
         weaponIndex = 0;
-        ShootingController.ShootActive = true;
+        DamageNearController.DamageNearActive = true;
         CallGhostController.CallActive = false;
         SpeedUpController.SpeedUpActive = false;
     }
@@ -40,21 +41,21 @@ public class SimpleMovement : MonoBehaviour
             }
             if (a123[0])
             {
-                ShootingController.ShootActive = true;
+                DamageNearController.DamageNearActive = true;
                 CallGhostController.CallActive = false;
                 SpeedUpController.SpeedUpActive = false;
                 EnergyController.currentWeapon = 0;
             }
             if (a123[1])
             {
-                ShootingController.ShootActive = false;
+                DamageNearController.DamageNearActive = false;
                 CallGhostController.CallActive = true;
                 SpeedUpController.SpeedUpActive = false;
                 EnergyController.currentWeapon = 1;
             }
             if (a123[2])
             {
-                ShootingController.ShootActive = false;
+                DamageNearController.DamageNearActive = false;
                 CallGhostController.CallActive = false;
                 SpeedUpController.SpeedUpActive = true;
                 EnergyController.currentWeapon = 2;
@@ -82,7 +83,7 @@ public class SimpleMovement : MonoBehaviour
         //}
         Vector3 newDirection = Vector3.RotateTowards(bodyVisual.forward, Direction, singleStepRotation, 0.0f);
         singleStepRotation = singleStepRotation * 0.9f;
-        bodyVisual.rotation = Quaternion.LookRotation(newDirection);
+        //bodyVisual.rotation = Quaternion.LookRotation(newDirection);
         Debug.DrawRay(bodyVisual.position, newDirection, Color.red);
         var vertFlag = false;
         var gorizFlag = false;
