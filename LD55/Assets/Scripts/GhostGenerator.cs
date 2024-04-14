@@ -13,16 +13,22 @@ public class GhostGenerator : MonoBehaviour
     public Vector2 GenerationY;
     public Transform DefaultTarget;
     public SummonController SummonController;
+    public AudioSource Sound;
+    bool soundActive;
     // Start is called before the first frame update
     void Start()
     {
-        
+        soundActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!ShostGenActive)  return;
+        if (!soundActive) { 
+            Sound.Play();
+            soundActive = true;
+        }
         SummonController.AddVal(Time.deltaTime);
         if (cooldownRemaining > 0)
         {
