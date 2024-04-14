@@ -9,15 +9,17 @@ public class GlobalTimeController : MonoBehaviour
     public bool globalSpeedUpActive;
     public float localSpeedMod;
     public float globalSpeedMod;
+    public bool Active;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Active=true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!Active) { return; }
         UpdateTime();
     }
     public void UpdateTime()

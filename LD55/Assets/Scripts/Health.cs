@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int Value;
-    public SceneControl SceneControl;
+    public LoseWindow LoseWindow;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +33,6 @@ public class Health : MonoBehaviour
     public void Damage()
     {
         Value--;
-        if (Value <= 0) SceneControl.RestartLevel();
+        if (Value <= 0) LoseWindow.Lost();
     }
 }

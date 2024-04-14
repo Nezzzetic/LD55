@@ -11,6 +11,8 @@ public class GlobalSpeedUp : MonoBehaviour
     public SummonController SummonController;
     public GlobalTimeController GlobalTimeController;
     public AudioSource Sound;
+    public GameObject EyesBlack;
+    public GameObject EyesBlue;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,8 @@ public class GlobalSpeedUp : MonoBehaviour
                 cooldownRemaining = -1;
                 SpeedUpActive = true;
                 Sound.Play();
+                EyesBlack.SetActive(false);
+                EyesBlue.SetActive(true);
             }
         }
         if (SpeedUpActive)

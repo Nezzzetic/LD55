@@ -13,6 +13,9 @@ public class BombRainController : MonoBehaviour
     public Transform DefaultTarget;
     public SummonController SummonController;
     public AudioSource Sound;
+    public GameObject EyesBlack;
+    public GameObject EyesBlue;
+
     bool soundActive;
     public List<GameObject> bombs = new List<GameObject>();
     // Start is called before the first frame update
@@ -36,6 +39,8 @@ public class BombRainController : MonoBehaviour
                 {
                     Sound.Play();
                     soundActive = true;
+                    EyesBlack.SetActive(false);
+                    EyesBlue.SetActive(true);
                 }
                 cooldownRemaining = cooldown;
                 CreateBomb();
