@@ -3,26 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneControl : MonoBehaviour
+public class Hint : MonoBehaviour
 {
+    public GameObject text;
+    bool active;
     // Start is called before the first frame update
     void Start()
     {
-        
+        active = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void Lost()
-    {
-        RestartLevel();
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            active = !active;
+            text.SetActive(active);
+        }
     }
 }

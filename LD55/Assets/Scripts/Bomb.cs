@@ -41,6 +41,6 @@ public class Bomb : MonoBehaviour
         //    if (hitCollider.GetComponent<Health>() != null)
         //        hitCollider.GetComponent<Health>().Damage();
         //}
-        Destroy(explosion, 1);
+        Destroy(explosion, 0.5f);
     }
 }

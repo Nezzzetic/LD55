@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public int Value;
     public LoseWindow LoseWindow;
+    public GameObject LoseFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class Health : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<GhostController>() != null) {
-            other.GetComponent<GhostController>().Death();
+            //other.GetComponent<GhostController>().Death();
             Damage();
         }
         if (other.GetComponent<BombBoom>() != null)
@@ -33,6 +34,10 @@ public class Health : MonoBehaviour
     public void Damage()
     {
         Value--;
-        if (Value <= 0) LoseWindow.Lost();
+        if (Value <= 0)
+        {
+            Instantiate(LoseFX, transform.position, Quaternion.identity);
+            LoseWindow.Lost();
+        }
     }
 }

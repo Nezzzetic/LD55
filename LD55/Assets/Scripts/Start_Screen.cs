@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneControl : MonoBehaviour
+public class Start_Screen : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,15 +14,9 @@ public class SceneControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void Lost()
-    {
-        RestartLevel();
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }
