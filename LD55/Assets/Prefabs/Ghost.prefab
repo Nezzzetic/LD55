@@ -5045,7 +5045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  speed: 0.7
+  speed: 0.5
   DeathFX: {fileID: 1240500896283268565, guid: f359388055c417647b5f5bda07c078a0, type: 3}
 --- !u!54 &-4403547497783642854
 Rigidbody:

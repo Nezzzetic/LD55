@@ -6078,7 +6078,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -62.28}
-  m_SizeDelta: {x: 1500, y: 500}
+  m_SizeDelta: {x: 1600, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1951742462
 MonoBehaviour:
@@ -6100,23 +6100,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Protect the singing elders to summon rain and save your village
+  m_text: 'Protect the singing elders to summon the rain and save your village! Use
+    magic songs to defeat fire spirits.
 
 
+    WASD - movement
 
-    WASD
-    - movement
+    Song of power
+    (Left mouse button) - deals damage
 
-    The song of power (Left mouse button) - damage
+    Song of courage (Space) - enemies in
+    range now move towards you
 
-    The song
-    of courage (Space) - taunt
-
-    The song of time (Left Shift) - slow
+    Song of time (Left Shift) - slows down time
 
 
     Press
-    F1 to show/hide controls. Press F1 now to start the summoning!'
+    i to show/hide controls. Press i now to start the summoning!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6143,8 +6143,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.97
-  m_fontSizeBase: 52.97
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -16,7 +16,7 @@ public class Hint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             active = !active;
             text.SetActive(active);

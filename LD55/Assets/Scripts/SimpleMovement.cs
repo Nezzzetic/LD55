@@ -126,7 +126,7 @@ public class SimpleMovement : MonoBehaviour
         var z = transform.position.z;
         if (transform.position.x < LimitX.x) x = LimitX.x;
         if (transform.position.x > LimitX.y) x = LimitX.y;
-        if (transform.position.z < LimitY.x) z = LimitY.y;
+        if (transform.position.z < LimitY.x) z = LimitY.x;
         if (transform.position.z > LimitY.y) z = LimitY.y;
         transform.position = new Vector3(x, transform.position.y, z);
     }
